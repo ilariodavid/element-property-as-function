@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Test onkeydown</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">		
+    </head>
+	
+    <body>        
+	
+		<input type="text" id="iptCampo" />
+		
+		<script>
+		
+			var prop = 'onkeydown';
+			var txtEvent = 'console.log(this);';			
+			
+			var el = document.querySelector('#iptCampo');
+			
+			//#1 setAttribute - works correctly
+			//el.setAttribute(prop, txtEvent);
+			
+			//#2 property - does't work
+			//el[prop] = txtEvent;
+			
+			//#3 propery with function - works correctly
+			el[prop] = eval(" (function (event) { return function(event) {" + txtEvent + " }; })(); ");
+		
+		</script>
+		
+    </body>
+</html>
+
+
+
